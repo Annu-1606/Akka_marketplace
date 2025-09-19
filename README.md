@@ -38,6 +38,12 @@ Supports user accounts, product catalog, orders, payments via wallet, and order 
 
 ### ▶️ Run the Services
 
+| Service             | Port | Docker Image          | URL                       |
+|--------------------|------|---------------------|---------------------------|
+| Account Service     | 8080 | `account-service`    | http://localhost:8080     |
+| Wallet Service      | 8082 | `wallet-service`     | http://localhost:8082     |
+| Marketplace Service | 8081 | `marketplace-service`| http://localhost:8081     |
+
 #### 1. Build Docker images
 ```bash
 # Account Service
@@ -51,24 +57,13 @@ docker build -t wallet-service .
 # Marketplace (Akka) Service
 cd marketplace-akka
 docker build -t marketplace-service .
-2. Run containers
-bash
-Copy code
-# Account → http://localhost:8080
+
+# Run Account Service → http://localhost:8080
 docker run -p 8080:8080 --name account account-service
 
-# Wallet → http://localhost:8082
+# Run Wallet Service → http://localhost:8082
 docker run -p 8082:8080 --name wallet wallet-service
 
-# Marketplace (Akka) → http://localhost:8081
+# Run Marketplace Service (Akka) → http://localhost:8081
 docker run -p 8081:8080 --rm --name marketplace \
   --add-host=host.docker.internal:host-gateway marketplace-service
-🚀 Phase 2 – Scaling with Akka Cluster
-Marketplace runs as an Akka Cluster with multiple replicas
-
-Product actors are sharded across nodes
-
-Orders processed by distributed worker actors via Group Routers
-
-Requests are load-balanced across cluster nodes
-
