@@ -51,8 +51,9 @@ docker build -t wallet-service .
 # Marketplace (Akka) Service
 cd marketplace-akka
 docker build -t marketplace-service .
-
-Run containers
+2. Run containers
+bash
+Copy code
 # Account → http://localhost:8080
 docker run -p 8080:8080 --name account account-service
 
@@ -62,15 +63,12 @@ docker run -p 8082:8080 --name wallet wallet-service
 # Marketplace (Akka) → http://localhost:8081
 docker run -p 8081:8080 --rm --name marketplace \
   --add-host=host.docker.internal:host-gateway marketplace-service
-
----
-
-####🚀 Phase 2 – Scaling with Akka Cluster
-
+🚀 Phase 2 – Scaling with Akka Cluster
 Marketplace runs as an Akka Cluster with multiple replicas
 
 Product actors are sharded across nodes
 
 Orders processed by distributed worker actors via Group Routers
 
-Requests load-balanced across cluster nodes
+Requests are load-balanced across cluster nodes
+
