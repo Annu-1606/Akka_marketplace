@@ -65,7 +65,7 @@ docker run -p 8081:8080 --rm --name marketplace \
 
 
 
-🚀 Phase 2 – Scaling with Akka Cluster
+####🚀 Phase 2 – Scaling with Akka Cluster
 
 Marketplace runs as an Akka Cluster with multiple replicas
 
