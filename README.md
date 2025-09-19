@@ -63,7 +63,7 @@ docker run -p 8082:8080 --name wallet wallet-service
 docker run -p 8081:8080 --rm --name marketplace \
   --add-host=host.docker.internal:host-gateway marketplace-service
 
-
+---
 
 ####🚀 Phase 2 – Scaling with Akka Cluster
 
